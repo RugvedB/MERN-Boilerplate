@@ -16,7 +16,12 @@
 - Store is implemented using <strong>useRedux + useContext</strong>. 
 - Ready to use for any MERN stack project.
 
+------------------------------------------
+### Demo
 
+<p align="center">
+  <img src ="./MERN-boilerplate.gif" width = "80%">
+</p>
 
 ------------------------------------------
 ###             Tech stack
