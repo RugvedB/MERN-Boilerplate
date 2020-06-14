@@ -1,8 +1,10 @@
 // HigherOrderComponent
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SendRequest } from '../helper/HandleRequest';
+import { GlobalContext } from './Global';
+import { saveUser } from '../store/actions/user';
 
 const AuthHeader = {//IMP
     headers:{
@@ -13,8 +15,10 @@ const AuthHeader = {//IMP
 export default function(Component ,auth){
     //auth = true means ...this Component can be accessed only by autorized user
     //auth = false means ...this Component can be accessed by anyone
+    
 
     function Auth() {
+        const { userDispatch } = useContext(GlobalContext)
         const [Loading, setLoading] = useState(auth)
 
         useEffect(() => {
@@ -22,11 +26,12 @@ export default function(Component ,auth){
                 const route = "http://localhost:8000/api/users/securedRoute"
     
                 SendRequest(route,{},AuthHeader).then(respData => {
-                    const { success , returnedValue : { user } } = respData
+                    const { success } = respData
                     if(success){
                         // This user object has _id , mail , isVerified
-                        // console.log(JSON.stringify(user))
+                        const { returnedValue : { user } } = respData
                         setLoading(false)
+                        userDispatch(saveUser(user)) //Save user in the store
                     }
                     else{
                         toast.error('Need to Login First')   
@@ -38,7 +43,7 @@ export default function(Component ,auth){
                 })
             }
            
-        }, [])
+        }, [userDispatch])
 
         return (
             <>

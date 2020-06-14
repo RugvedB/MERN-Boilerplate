@@ -14,24 +14,28 @@ import PasswordReset from './components/PasswordReset';
 import SecuredPage from './components/SecuredPage';
 import Auth from './HOC/Auth';
 import OpenPage from './components/OpenPage';
+import Global from './HOC/Global';
 
 
 function App() {
   return (
     <div className="App">
+      <Global>
       
-      <Router>
-        <NavbarComponent />
-        <Switch>
-          
-          <Route exact path="/register" component={Auth(Register,false)} />
-          <Route exact path="/login" component={Auth(Login,false)} />
-          <Route exact path="/passwordReset" component={Auth(PasswordReset,false)} />
-          <Route exact path="/SecuredPage" component={Auth(SecuredPage,true)} />
-          <Route exact path="/OpenPage" component={Auth(OpenPage,false)} />
-          <Redirect  to="/404" component={<h1>404</h1>} />
-        </Switch>
-      </Router>
+        <Router>
+          <NavbarComponent />
+          <Switch>
+            
+            <Route exact path="/register" component={Auth(Register,false)} />
+            <Route exact path="/login" component={Auth(Login,false)} />
+            <Route exact path="/passwordReset" component={Auth(PasswordReset,false)} />
+            <Route exact path="/SecuredPage" component={Auth(SecuredPage,true)} />
+            <Route exact path="/OpenPage" component={Auth(OpenPage,false)} />
+            <Redirect  to="/404" component={<h1>404</h1>} />
+          </Switch>
+        </Router>
+
+      </Global>
     </div>
   );
 }
