@@ -1,0 +1,1 @@
+module.exports.randomGenerator = () => Math.floor(Math.random()*10000000)
