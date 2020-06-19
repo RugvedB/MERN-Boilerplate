@@ -15,6 +15,8 @@
 - No need to use complex redux boiler plate for creating store.
 - Store is implemented using <strong>useRedux + useContext</strong>. 
 - Ready to use for any MERN stack project.
+- Responsive.
+- Error handled with proper actions(Eg redirect to login page when trying to access authenticated pages).
 
 ------------------------------------------
 ### Demo
@@ -70,4 +72,5 @@ npm start
 Checkout the site on <a href="http://localhost:3000/register">http://localhost:3000/register</a>
 
 
-
+------------------------------------------
+<h3 align="center"><b>Developed with :heart: by <a href="https://github.com/rugvedb">Rugved</a></h1>
